@@ -1,27 +1,43 @@
 # FastDa
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1. This application is based on the datasets __StaDa__ and __FaSta__ from the public database of the Deutsche Bahn. 
 
-## Development server
+For the access of the datasets, I need to sign up on the [developer's website of the Deutsche Bahn](https://developer.deutschebahn.com). After the sign up I need to subscribe for the two datasets. In the section *My Subscription* we generate a token in order to perform queries and fetch the necessary data, which is provided as an array of json objects.  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The dataset __StaDa__ (Status Data) holds information for each available German train station such as number representing the id number, name of the train station, respective address and further information of its infrastructure.  
 
-## Code scaffolding
+The dataset __FaSta__ (Facility Status) reflects the facility of a train station, specifically the elevators and escalators. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+For this application I want to search for German train stations. For this purpose, the application provides a search field, that allows the user to input a query string. After the submit, a http request is performed in the __StaDa__ dataset to retrieve a list of train stations. The user can thereafter choose a train station.
 
-## Build
+The number from the chosen train station is used to perform the second http request in the __FaSta__ dataset to retrieve an array of json objects.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+For the application () need the following information and sources
 
-## Running unit tests
+| Dataset   | variables                  |                                              url | query                             |
+| :-------- | -------------------------- | -----------------------------------------------: | :-------------------------------- |
+| __StaDa__ | `number, name`             |   https://api.deutschebahn.com/stada/v2/stations | ?searchstring=*String*            |
+| __FaSta__ | `type, state, description` | https://api.deutschebahn.com/fasta/v2/facilities | ?stationnumber=*NumberOfTypeLong* |
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+I assume that *number* in __StaDa__ is associated to the *stationnumber* in __FaSta__. The variable *type* are in [ACTIVE, INACTIVE, UNKNWON], state in [ESCALATOR, ELEVATOR] that can be both represented as enumeration and finally description as a string, describing the location.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Task 
+* Create a single page application using angular
+* Implement search field to search for German train stations
+* User can choose a train station among the results
+* A detail page provides an overview of the state of ALL elevators and escalators with its respective description, where it is
 
-## Further help
+## Steps
+1. Analyze the task
+2. Design a modular structure to divide the tasks and minimize the code load for each component
+3. Implement search field ui for __StaDa__
+4. Implement logic to retrieve query string
+5. Implement get request with the respective http options {'Content-Type': 'application/json', 'Authorization': 'Bearer *Token*'}, the respective url and query string
+6. Display the search result and identifiable to pass the number for showing the details
+7. Implement ui for detail
+8. Retrieve the number from the chosen train station
+9. Implement get request with the aforementioned http options, the respective url and number
+10. Display the search results for each elevator/escalator as active, inactive or unknown
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+For this project, bootstrap v4.3.0 is used to style the application accordingly as cdn.
