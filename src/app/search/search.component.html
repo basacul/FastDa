@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <form>
+      <form (ngSubmit)="onSubmit(searchForm)" #searchForm="ngForm">
         <div class="form-group mt-4">
           <div class="input-group">
-            <input type="text" class="form-control form-control-lg" name="searchString"
+            <input ngModel type="text" class="form-control form-control-lg" name="searchString"
               placeholder="search for train stations...">
             <div class="input-group-append">
               <button class="btn btn-secondary" type="submit" id="button-addon">Search</button>
