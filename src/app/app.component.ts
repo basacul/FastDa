@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'FastDa';
+
+  id_from_appsearch: string;
+
+  receiveData($event) {
+    this.id_from_appsearch = $event;
+  }
 }

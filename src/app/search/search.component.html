@@ -18,10 +18,7 @@
         <div class="card">
           <h5 class="card-header">{{stada.name}}</h5>
           <div class="card-body">
-            <!-- Info gives short overview if there is any elevator or escalator out of order by signaling with an orange background -->
-            <h5 class="card-title">Info</h5>
-            <p class="card-text">SOME PLACEHOLDERCONTENT</p>
-            <a href="#" class="btn btn-info">Detail {{ stada.number }}</a>
+            <button class="btn btn-info" (click)="sendStadaId(stada.number)">Detail {{ stada.number }}</button>
           </div>
         </div>
       </div>

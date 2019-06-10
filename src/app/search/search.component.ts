@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Stada } from '../interface/Stada';
 import { StadaService } from '../services/stada/stada.service';
@@ -9,6 +9,7 @@ import { StadaService } from '../services/stada/stada.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
+  @Output() searchEvent = new EventEmitter<string>();
   stadas: Stada[];
   constructor(private stadaService: StadaService) { }
 
@@ -18,6 +19,7 @@ export class SearchComponent {
    * @param form NgForm from which searchString is retrieved
    */
   onSubmit(form: NgForm) {
+    console.log("Search for: ", form.value.searchString);
     if (form.value.searchString && form.value.searchString.trim()) {
       this.stadaService.getStada(form.value.searchString.trim()).subscribe(response => {
         // TODO: an interface needs to be implemented to handle the response data format
@@ -27,8 +29,12 @@ export class SearchComponent {
     } else {
       // TODO: Inform user to input text
     }
-
     form.reset();
+  }
+
+  sendStadaId(id: string) {
+    console.log(id);
+    this.searchEvent.emit(id);
   }
 
 }
