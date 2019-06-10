@@ -9,8 +9,11 @@ import { StadaService } from '../services/stada/stada.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
+  // when button clicked, send chosen id to parent
   @Output() searchEvent = new EventEmitter<string>();
+
   stadas: Stada[];
+
   constructor(private stadaService: StadaService) { }
 
   /**
@@ -32,8 +35,11 @@ export class SearchComponent {
     form.reset();
   }
 
+  /**
+   * Passes the string id as number to its parent
+   * @param id string from stada entry
+   */
   sendStadaId(id: string) {
-    console.log(id);
     this.searchEvent.emit(id);
   }
 

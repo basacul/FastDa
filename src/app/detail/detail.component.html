@@ -1,3 +1,18 @@
-<p>
-  ID: {{ chosen_stada_id }}
-</p>
+<div *ngIf="chosen_stada_id" class="row">
+  <div class="col-12 mt-1 mb-1">
+    <div class="card">
+      <h5 class="card-header">{{ chosen_stada_id }}</h5>
+      <div class="card-body">
+        <!-- Info gives short overview if there is any elevator or escalator out of order by signaling with an orange background -->
+        <h5 class="card-title">Info</h5>
+        <div class="list-group">
+          <li *ngFor="let fasta of fastas"
+            [ngClass]="['list-group-item', fasta.state === 'ACTIVE' ? 'list-group-item-success' : 'list-group-item-danger']">
+            {{fasta.type}} : {{ fasta.description}}
+          </li>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

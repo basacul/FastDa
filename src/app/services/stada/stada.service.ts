@@ -21,8 +21,7 @@ export class StadaService {
   /**
    * Takes the searchString and includes it in the query url for the StaDa dataset. 
    * @param searchString a string to search for train stations
-   * @return Observable<Stada[]> An Observable holding an array of simplified Stada objects
-   *                             holding only the number and the name of the station
+   * @return Observable<any[]> An Observable holding an array of  Stada objects
    */
   getStada(searchString: string): Observable<any[]> {
     const mode: string = '?limit=20&searchstring=';
