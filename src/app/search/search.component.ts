@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { StadaService } from '../stada.service';
-
-// simplified data model for stada entry
-interface Stada {
-  number: number;
-  name: string;
-}
+import { Stada } from '../interface/Stada';
+import { StadaService } from '../services/stada/stada.service';
 
 @Component({
   selector: 'app-search',
@@ -24,17 +19,16 @@ export class SearchComponent {
    */
   onSubmit(form: NgForm) {
     if (form.value.searchString && form.value.searchString.trim()) {
-      console.log("inside");
-      const searchString: string = form.value.searchString.trim();
-      form.reset();
-      this.stadaService.getStada(searchString).subscribe(results => {
-        console.log(results);
-        this.stadas = results;
+      this.stadaService.getStada(form.value.searchString.trim()).subscribe(response => {
+        // TODO: an interface needs to be implemented to handle the response data format
+        let results: any = response;
+        this.stadas = results.result;
       });
     } else {
-      form.reset();
       // TODO: Inform user to input text
     }
+
+    form.reset();
   }
 
 }
