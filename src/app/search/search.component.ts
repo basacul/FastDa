@@ -22,10 +22,15 @@ export class SearchComponent {
    * @param form NgForm from which searchString is retrieved
    */
   onSubmit(form: NgForm) {
-    console.log("Search for: ", form.value.searchString);
-    if (form.value.searchString && form.value.searchString.trim()) {
+    let searchString = form.value.searchString;
+
+    console.log("Search for: ", searchString);
+
+
+    if (searchString && searchString.trim()) {
       this.stadaService.getStada(form.value.searchString.trim()).subscribe(response => {
-        // TODO: an interface needs to be implemented to handle the response data format
+        // TODO: an interface needs to be implemented to handle the response data format that
+        //       differs from the actual StaDa data format
         let results: any = response;
         this.stadas = results.result;
       });
@@ -39,8 +44,8 @@ export class SearchComponent {
    * Passes the string id as number to its parent
    * @param id string from stada entry
    */
-  sendStadaId(id: string) {
-    this.searchEvent.emit(id);
+  sendStada(id: string, name: string) {
+    this.searchEvent.emit(`${id} ${name}`);
   }
 
 }

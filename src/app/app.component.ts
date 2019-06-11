@@ -6,11 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'FastDa';
-
-  id_from_appsearch: string;
+  stada: string;
 
   receiveData($event) {
-    this.id_from_appsearch = $event;
+    this.stada = $event;
+    console.log(this.stada);
   }
 }

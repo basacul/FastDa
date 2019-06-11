@@ -8,19 +8,30 @@ import { FastaService } from '../services/fasta/fasta.service';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnChanges {
-  @Input() chosen_stada_id: string;
+
+  @Input() chosen_stada: string;
 
   fastas: Fasta[];
 
   constructor(private fastaService: FastaService) { }
 
   ngOnChanges() {
-    this.chosen_stada_id;
-    if (Number(this.chosen_stada_id) >= 0) {
-      this.fastaService.getFasta(this.chosen_stada_id).subscribe(response => {
-        this.fastas = response;
-      });
+    if (this.chosen_stada) {
+      // retrieve id
+      const id = this.chosen_stada.split(" ")[0];
+
+
+
+      if (Number(id) >= 0) {
+        this.fastaService.getFasta(id).subscribe(response => {
+          this.fastas = response;
+        });
+      }
     }
+  }
+
+  deleteChosenStadaId() {
+    this.chosen_stada = "";
   }
 
 }
