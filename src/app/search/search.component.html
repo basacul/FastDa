@@ -12,8 +12,6 @@
           </div>
         </div>
       </form>
-    </div>
-    <div class="row">
       <div *ngFor="let stada of stadas" class="col-12 col-md-6 col-xl-3 mt-1 mb-1">
         <div class="card" (click)="sendStada(stada.number, stada.name)">
           <h5 class="card-header">{{stada.name}} </h5>

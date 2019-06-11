@@ -8,12 +8,12 @@
         <h5 class="card-title">Info: <span class="text-success">WORKING </span> <span class="text-danger"> OUT OF
             ORDER</span>
         </h5>
-        <div class="list-group">
+        <ul class="list-group">
           <li *ngFor="let fasta of fastas"
             [ngClass]="['list-group-item', fasta.state === 'ACTIVE' ? 'list-group-item-success' : 'list-group-item-danger']">
             {{fasta.type}} : {{ fasta.description}}
           </li>
-        </div>
+        </ul>
 
       </div>
     </div>
