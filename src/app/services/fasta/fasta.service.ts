@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Fasta } from '../../interface/fasta';
+
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -23,9 +25,9 @@ export class FastaService {
    * @param id of the train station
    * @return Observable<any[]> An Observable holding a fasta entry
    */
-  getFasta(id: string): Observable<any[]> {
+  getFasta(id: string): Observable<Fasta[]> {
     const mode: string = '?stationnumber=';
-    return this.http.get<any[]>(`${this.url}${mode}${id}`, this.httpOptions);
+    return this.http.get<Fasta[]>(`${this.url}${mode}${id}`, this.httpOptions);
   }
 
   constructor(private http: HttpClient) { }

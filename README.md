@@ -40,4 +40,24 @@ I assume that *number* in __StaDa__ is associated to the *stationnumber* in __Fa
 9. Implement get request with the aforementioned http options, the respective url and number
 10. Display the search results for each elevator/escalator as active, inactive or unknown
 
-For this project, bootstrap v4.3.0 is used to style the application accordingly as cdn.
+For this project, bootstrap v4.3.0 is used as cdn in order to style the application accordingly.
+
+## How to use
+In order to use this application make sure you fulfill the following requirements:
+1. Node.js installed: https://nodejs.org/en/download/
+2. Angular/cli installed :  npm install -g @angular/cli
+   
+On my Windows 10 system I have
+* node version: v12.2.0
+* npm version: 6.9.0
+* angular cli version: 8.0.1 
+and the angular application was run and tested in this environment using Visual Code Studio as editor.
+
+When fulfilling the requirements stated above simply download or clone this repository and run the following statements:
+```
+> cd ..../../FastDa
+> npm install
+> ng serve
+```
+
+And the prototype should be up and running on your machine.

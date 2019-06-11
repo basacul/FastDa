@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Stada } from '../interface/Stada';
+import { Stada } from '../interface/stada';
 import { StadaService } from '../services/stada/stada.service';
 
 @Component({
